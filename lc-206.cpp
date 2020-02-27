@@ -30,3 +30,26 @@ public:
         return head;
     }
 };
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+
+struct ListNode* reverseList(struct ListNode* head){
+    struct ListNode  ret, *p, *q;
+    if(head == NULL)return head;
+    ret.next  = NULL;//虚拟头节点
+    p = head;
+    //head = NULL;
+    while(p){
+         q = p->next;
+         p->next = ret.next;
+         ret.next = p;
+         p = q;//头插
+    }
+    return ret.next;
+}
